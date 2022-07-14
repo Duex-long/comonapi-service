@@ -5,6 +5,6 @@ import { createDoc } from './utils/swaggerDoc';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   createDoc(app);
-  await app.listen(3000);
+  await app.listen(6898);
 }
 bootstrap();
