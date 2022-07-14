@@ -6,19 +6,21 @@ import {
   Param,
   Post,
   Put,
-  Req,
 } from '@nestjs/common';
+import { Cat } from './cat.interface';
+import { CatsService } from './cats.service';
 import { CreateCatDto } from './create-cat.dto';
 
 @Controller('cats')
 export class CatController {
+  constructor(private catService: CatsService) {}
   @Get()
-  findAll(): string {
-    return 'This action returns all cats';
+  async findAll(): Promise<Cat[]> {
+    return this.catService.findAll();
   }
   @Post()
-  create(@Body() createCatDto: CreateCatDto): string {
-    return 'This action adds a new cat';
+  create(@Body() createCatDto: CreateCatDto) {
+    this.catService.create(createCatDto);
   }
   // 动态路由
   @Get(':id')
