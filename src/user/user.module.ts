@@ -3,5 +3,10 @@ import { UserController } from './user.controller';
 
 @Module({
   controllers: [UserController],
+  exports: [UserModule],
 })
-export class UserModule {}
+export class UserModule {
+  constructor() {
+    console.log('userModule Inject');
+  }
+}
