@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { DbService } from 'src/modules/db/db.service';
 
 @Injectable()
 export class UserService {
-  createUser() {}
+  constructor(private dbService: DbService) {}
+  createUser() {
+    return this.dbService.getHello();
+  }
 }
